@@ -2,15 +2,10 @@ apiVersion: cluster.open-cluster-management.io/v1beta1
 kind: Placement
 metadata:
   name: placement-acm-hardening
-  namespace: default
+  namespace: policies
 spec:
-  clusterSets:
-    - default
   predicates:
-    - requiredClusterSelector:
-        labelSelector:
-          matchExpressions:
-            - key: name
-              operator: In
-              values:
-                - local-cluster
+  - requiredClusterSelector:
+      labelSelector:
+        matchExpressions:
+          - {key: name, operator: In, values: ["local-cluster"]}
